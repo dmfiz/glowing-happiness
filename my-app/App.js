@@ -1,12 +1,19 @@
+import { NavigationContainer, StackActions } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import NotesScreen from './screens/NotesScreen';
 
-export default function App() {
+
+const Stack = createNativeStackNavigator();
+
+function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Notes" component={NotesScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
@@ -20,3 +27,5 @@ const styles = StyleSheet.create({
     width: "100%",
   },
 });
+
+export default App
