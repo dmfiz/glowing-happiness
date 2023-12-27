@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import {
   Dimensions,
+  Pressable,
   StyleSheet,
   Text,
   ScrollView,
   View,
   TouchableHighlight,
+  TouchableOpacity,
 } from "react-native";
 
 const windowWidth = Dimensions.get("window").width;
@@ -18,55 +20,55 @@ const Grid = ({ navigation }) => {
 
   const items = [
     {
-      key: "1",
+      key: 1,
       title: "Note 1",
       content: "This is a simple note about not forgetting to be awesome.",
       backgroundColor: "red",
     },
     {
-      key: "2",
+      key: 2,
       title: "Note 2",
       content: "This is a simple note about not forgetting to be awesome.",
       backgroundColor: "green",
     },
     {
-      key: "3",
+      key: 3,
       title: "Note 3",
       content: "This is a simple note about not forgetting to be awesome.",
       backgroundColor: "mistyrose",
     },
     {
-      key: "4",
+      key: 4,
       title: "Note 4",
       content: "This is a simple note about not forgetting to be awesome.",
       backgroundColor: "yellow",
     },
     {
-      key: "5",
+      key: 5,
       title: "Note 5",
       content: "This is a simple note about not forgetting to be awesome.",
       backgroundColor: "orange",
     },
     {
-      key: "6",
+      key: 6,
       title: "Note 6",
       content: "This is a simple note about not forgetting to be awesome.",
       backgroundColor: "brown",
     },
     {
-      key: "7",
+      key: 7,
       title: "Note 7",
       content: "This is a simple note about not forgetting to be awesome.",
       backgroundColor: "mistyrose",
     },
     {
-      key: "8",
+      key: 8,
       title: "Note 8",
       content: "This is a simple note about not forgetting to be awesome.",
       backgroundColor: "pink",
     },
     {
-      key: "9",
+      key: 9,
       title: "Note 9",
       content: "This is a simple note about not forgetting to be awesome.",
       backgroundColor: "bisque",
@@ -76,27 +78,42 @@ const Grid = ({ navigation }) => {
   return (
     <ScrollView contentContainerStyle={styles.notesContainer}>
       {items.map((item) => (
-        <TouchableHighlight onPress={() => navigation.navigate("Note")}>
-          <View key={item.key} style={styles.singleNote}>
+        <View key={item.key} style={styles.singleNote}>
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate("Note", {
+                key: item.key,
+                title: item.title,
+                content: item.content,
+              })
+            }
+          >
             <Text style={{ fontSize: 25 }}>{item.title}</Text>
             <Text style={{ fontSize: 16 }}>{item.content}</Text>
-          </View>
-        </TouchableHighlight>
+          </TouchableOpacity>
+        </View>
       ))}
-      <TouchableHighlight onPress={() => navigation.navigate("Note")}>
-        <View
-          style={{
-            ...styles.singleNote,
-            justifyContent: "center",
-            alignItems: "center",
-          }}
+      <View
+        style={{
+          ...styles.singleNote,
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate("Note", {
+              title: "",
+              content: "",
+            })
+          }
         >
           <Text style={{ fontSize: 25, textAlign: "center" }}>
             Add new note
           </Text>
           <Text style={{ fontSize: 25, textAlign: "center" }}>+</Text>
-        </View>
-      </TouchableHighlight>
+        </TouchableOpacity>
+      </View>
     </ScrollView>
   );
 };
@@ -115,6 +132,8 @@ const styles = StyleSheet.create({
     padding: 10,
     paddingBottom: 25,
     width: noteWidth,
+    elevation: 2,
+    shadowColor: "#000000",
   },
 });
 

@@ -20,7 +20,7 @@ const NotesScreen = ({ navigation }) => {
         <Text>Header</Text>
       </View>
       <View style={styles.main}>
-        <Grid navigation={props.navigation} />
+        <Grid navigation={navigation} />
       </View>
       <View style={styles.footer}>
         <Text>Footer</Text>
