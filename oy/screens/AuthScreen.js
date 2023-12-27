@@ -11,10 +11,12 @@ function AuthScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <Text style={{ fontSize: 40 }}>Organize yourself</Text>
-      <TouchableOpacity onPress={() => navigation.navigate("Notes")}>
-        <View style={styles.loginButton}>
-          <Text style={{ fontSize: 20 }}>Login</Text>
-        </View>
+
+      <TouchableOpacity
+        style={styles.loginButton}
+        onPress={() => navigation.navigate("Notes")}
+      >
+        <Text style={{ fontSize: 20 }}>Login</Text>
       </TouchableOpacity>
     </SafeAreaView>
   );

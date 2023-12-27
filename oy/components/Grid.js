@@ -78,20 +78,20 @@ const Grid = ({ navigation }) => {
   return (
     <ScrollView contentContainerStyle={styles.notesContainer}>
       {items.map((item) => (
-        <View key={item.key} style={styles.singleNote}>
-          <TouchableOpacity
-            onPress={() =>
-              navigation.navigate("Note", {
-                key: item.key,
-                title: item.title,
-                content: item.content,
-              })
-            }
-          >
-            <Text style={{ fontSize: 25 }}>{item.title}</Text>
-            <Text style={{ fontSize: 16 }}>{item.content}</Text>
-          </TouchableOpacity>
-        </View>
+        <TouchableOpacity
+          key={item.key}
+          style={styles.singleNote}
+          onPress={() =>
+            navigation.navigate("Note", {
+              key: item.key,
+              title: item.title,
+              content: item.content,
+            })
+          }
+        >
+          <Text style={{ fontSize: 25 }}>{item.title}</Text>
+          <Text style={{ fontSize: 16 }}>{item.content}</Text>
+        </TouchableOpacity>
       ))}
       <View
         style={{
