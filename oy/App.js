@@ -16,9 +16,28 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="AuthScreen">
-        <Stack.Screen name="Auth" component={AuthScreen} />
-        <Stack.Screen name="Notes" component={NotesScreen} />
-        <Stack.Screen name="Note" component={NoteScreen} />
+        <Stack.Screen
+          name="Auth"
+          component={AuthScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="Notes"
+          component={NotesScreen}
+          options={{
+            headerBackVisible: false,
+            headerTitleAlign: "center",
+          }}
+        />
+        <Stack.Screen
+          name="Note"
+          component={NoteScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

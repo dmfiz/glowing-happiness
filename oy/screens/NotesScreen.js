@@ -37,10 +37,11 @@ const styles = StyleSheet.create({
   footer: {
     height: 60,
     width: "100%",
-    backgroundColor: "lightsteelblue",
+    backgroundColor: "white",
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
+    borderTop: "1px solid black",
   },
   header: {
     backgroundColor: "navy",
@@ -49,7 +50,7 @@ const styles = StyleSheet.create({
   },
   main: {
     height: gridHeight,
-    backgroundColor: "ghostwhite",
+    backgroundColor: "#F8F8F8",
     width: "100%",
   },
 });

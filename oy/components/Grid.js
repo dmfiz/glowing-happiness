@@ -9,6 +9,7 @@ import {
   TouchableHighlight,
   TouchableOpacity,
 } from "react-native";
+import Animated from "react-native-reanimated";
 
 const windowWidth = Dimensions.get("window").width;
 const gap = 10;
@@ -79,18 +80,21 @@ const Grid = ({ navigation }) => {
     <ScrollView contentContainerStyle={styles.notesContainer}>
       {items.map((item) => (
         <TouchableOpacity
-          key={item.key}
-          style={styles.singleNote}
+          style={styles.touchSingleNote}
           onPress={() =>
             navigation.navigate("Note", {
-              key: item.key,
-              title: item.title,
-              content: item.content,
+              item: item,
             })
           }
         >
-          <Text style={{ fontSize: 25 }}>{item.title}</Text>
-          <Text style={{ fontSize: 16 }}>{item.content}</Text>
+          <Animated.View
+            sharedTransitionTag={`note-${item.key}`}
+            key={item.key}
+            style={styles.singleNote}
+          >
+            <Text style={{ fontSize: 25 }}>{item.title}</Text>
+            <Text style={{ fontSize: 16 }}>{item.content}</Text>
+          </Animated.View>
         </TouchableOpacity>
       ))}
       <View
@@ -134,7 +138,9 @@ const styles = StyleSheet.create({
     width: noteWidth,
     elevation: 2,
     shadowColor: "#000000",
+    borderRadius: 10,
   },
+  touchSingleNote: {},
 });
 
 export default Grid;
