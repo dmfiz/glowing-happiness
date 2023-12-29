@@ -80,6 +80,7 @@ const Grid = ({ navigation }) => {
     <ScrollView contentContainerStyle={styles.notesContainer}>
       {items.map((item) => (
         <TouchableOpacity
+          key={item.key}
           style={styles.touchSingleNote}
           onPress={() =>
             navigation.navigate("Note", {
@@ -89,7 +90,6 @@ const Grid = ({ navigation }) => {
         >
           <Animated.View
             sharedTransitionTag={`note-${item.key}`}
-            key={item.key}
             style={styles.singleNote}
           >
             <Text style={{ fontSize: 25 }}>{item.title}</Text>

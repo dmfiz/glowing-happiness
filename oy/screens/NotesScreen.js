@@ -1,8 +1,8 @@
-import { StatusBar } from "expo-status-bar";
 import {
   Dimensions,
   SafeAreaView,
   ScrollView,
+  StatusBar,
   StyleSheet,
   Text,
   View,
@@ -11,21 +11,14 @@ import {
 import Grid from "../components/Grid";
 
 const windowHeight = Dimensions.get("window").height;
-const gridHeight = windowHeight - 115;
+const gridHeight = windowHeight;
 
 const NotesScreen = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <Text>Header</Text>
-      </View>
       <View style={styles.main}>
         <Grid navigation={navigation} />
       </View>
-      <View style={styles.footer}>
-        <Text>Footer</Text>
-      </View>
-      <StatusBar style="auto" />
     </SafeAreaView>
   );
 };
@@ -33,24 +26,12 @@ const NotesScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  footer: {
-    height: 60,
-    width: "100%",
-    backgroundColor: "white",
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    borderTop: "1px solid black",
-  },
-  header: {
-    backgroundColor: "navy",
-    height: 0,
-    width: "100%",
+    backgroundColor: "#F8F8F8",
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
   main: {
     height: gridHeight,
-    backgroundColor: "#F8F8F8",
+
     width: "100%",
   },
 });
