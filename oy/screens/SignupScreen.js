@@ -14,6 +14,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { signup } from "../utils/signup";
 import { saveUserData } from "../utils/saveUserData";
+import { colors } from "../theme/colors";
 
 function SignupScreen({ navigation }) {
   const [name, setName] = useState("");
@@ -133,7 +134,7 @@ export default SignupScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F8F8F8",
+    backgroundColor: colors.lightgray,
     alignItems: "center",
     justifyContent: "center",
     height: "100%",
@@ -159,7 +160,7 @@ const styles = StyleSheet.create({
   signupButton: {
     height: 60,
     width: 300,
-    backgroundColor: "#ff9e22",
+    backgroundColor: colors.highlight,
     elevation: 2,
     shadowColor: "#000000",
     justifyContent: "center",

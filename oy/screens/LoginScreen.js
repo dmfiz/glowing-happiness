@@ -12,6 +12,7 @@ import {
 import Animated from "react-native-reanimated";
 import { login } from "../utils/login";
 import { emailVerification } from "../utils/emailVerification";
+import { colors } from "../theme/colors";
 
 function LoginScreen({ navigation }) {
   const [email, setEmail] = useState("");
@@ -128,7 +129,7 @@ export default LoginScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F8F8F8",
+    backgroundColor: colors.lightgray,
     alignItems: "center",
     justifyContent: "center",
     height: "100%",
@@ -157,7 +158,7 @@ const styles = StyleSheet.create({
   loginButton: {
     height: 60,
     width: 300,
-    backgroundColor: "#ff9e22",
+    backgroundColor: colors.highlight,
     elevation: 2,
     shadowColor: "#000000",
     justifyContent: "center",

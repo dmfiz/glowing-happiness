@@ -12,6 +12,7 @@ import {
 import Animated from "react-native-reanimated";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState } from "react";
+import { colors } from "../theme/colors";
 
 function SplashScreen({ navigation }) {
   //State for ActivityIndicator animation
@@ -60,7 +61,7 @@ export default SplashScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F8F8F8",
+    backgroundColor: colors.lightgray,
     paddingTop: Platform.OS === "android" ? 50 : 0,
     alignItems: "center",
     justifyContent: "center",
