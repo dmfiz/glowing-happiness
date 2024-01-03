@@ -43,8 +43,6 @@ function TasksScreen({ navigation }) {
       completed: false,
       userId: FIREBASE_AUTH.currentUser.uid,
     });
-
-    console.log(docRef);
   };
 
   const loadTaskList = async () => {
@@ -60,7 +58,7 @@ function TasksScreen({ navigation }) {
       task.id = doc.id;
       tasks.push(task);
     });
-    console.log(tasks);
+
     setTasks(tasks);
     setLoading(false);
   };
@@ -129,7 +127,7 @@ function TasksScreen({ navigation }) {
       </Modal>
 
       {/* ADD BUTTON */}
-      <Animated.View style={{ position: "absolute", bottom: 100, right: 20 }}>
+      <Animated.View style={{ position: "absolute", bottom: 100, right: 5 }}>
         <TouchableOpacity
           onPress={() => setShowModal(true)}
           style={{

@@ -73,9 +73,7 @@ const items = [
   },
 ];
 
-const Grid = ({ navigation }) => {
-  const [notes, setNotes] = useState([items]);
-
+const Grid = (notes) => {
   const renderItem = ({ item }) => {
     return (
       <TouchableOpacity
@@ -113,8 +111,8 @@ const Grid = ({ navigation }) => {
 
   return (
     <MasonryList
-      data={items}
-      keyExtractor={(item) => item.key}
+      data={notes}
+      keyExtractor={(item) => item.id}
       numColumns={2}
       showsVerticalScrollIndicator={false}
       renderItem={renderItem}

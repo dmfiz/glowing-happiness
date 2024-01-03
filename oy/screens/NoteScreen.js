@@ -15,6 +15,17 @@ import Animated, {
   useSharedValue,
   SharedTransition,
 } from "react-native-reanimated";
+import {
+  QuerySnapshot,
+  addDoc,
+  collection,
+  doc,
+  getDocs,
+  query,
+  updateDoc,
+  where,
+} from "firebase/firestore";
+import { FIREBASE_AUTH, FIREBASE_DB } from "../firebaseConfig";
 import { MaterialIcons } from "@expo/vector-icons";
 import { colors } from "../theme/colors";
 
@@ -25,11 +36,27 @@ function NoteScreen({ route, navigation }) {
   const [content, setContent] = useState(item.content);
   const [bgColor, setBgColor] = useState(item.backgroundColor);
 
-  const windowHeight = Dimensions.get("window").height;
-  const noteHeight = windowHeight - 100;
+  const updateNote = async (item, title, content, bgColor) => {
+    const ref = doc(FIREBASE_DB, `notes/${item.id}`);
+    console.log(ref);
+    await updateDoc(ref, {
+      title: title,
+      content: content,
+      backgroundColor: bgColor,
+    });
+  };
 
-  const isTitle = item.title ? item.title : "New Note Title";
-  const isContent = item.content ? item.content : "New Note";
+  const saveNote = async (title, content, bgColor) => {
+    const docRef = await addDoc(collection(FIREBASE_DB, "notes"), {
+      title: title,
+      content: content,
+      backgroundColor: bgColor,
+      userId: FIREBASE_AUTH.currentUser.uid,
+    });
+
+    console.log(docRef);
+  };
+
   return (
     <Animated.View
       style={{
@@ -40,7 +67,16 @@ function NoteScreen({ route, navigation }) {
     >
       <View style={styles.buttonContainer}>
         {/* BACK BUTTON */}
-        <TouchableOpacity onPress={() => navigation.goBack()}>
+        <TouchableOpacity
+          onPress={() => {
+            if (item.id) {
+              updateNote(item, title, content, bgColor);
+            } else {
+              saveNote(title, content, bgColor);
+            }
+            navigation.goBack();
+          }}
+        >
           <MaterialIcons name="arrow-back" size={24} color="black" />
         </TouchableOpacity>
 
